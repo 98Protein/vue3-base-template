@@ -1,0 +1,29 @@
+{
+    // 默认格式化工具选择prettier
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // 禁用保存时自动格式化
+    "editor.formatOnSave": false,
+    //开启自动修复
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.stylelint": "explicit"
+    },
+    // 配置stylelint检查的文件类型范围
+    "stylelint.validate": ["css", "scss", "vue", "html"], // 与package.json的scripts对应
+    "stylelint.enable": true,
+    "css.validate": false,
+    "scss.validate": false,
+    "less.validate": false,
+    // 控制相关文件嵌套展示
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+        "*.ts": "$(capture).test.ts, $(capture).test.tsx",
+        "*.tsx": "$(capture).test.ts, $(capture).test.tsx",
+        // "*.env": "$(capture).env.*",
+        "vite.config.ts": "vite.config.ts,vite.config*.mjs",
+        "package.json": ".npmrc,pnpm-lock.yaml,pnpm-workspace.yaml,.gitpod.yml,LICENSE,.gitattributes,.browserslistrc",
+        "eslint*": ".eslintignore,.prettierignore,.stylelintignore,.commitlintrc.*,.prettierrc*,.stylelintrc.*,.eslintrc-auto-import.json,.editorconfig,.commitlint.cjs"
+    }
+}

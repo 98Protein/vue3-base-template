@@ -1,0 +1,9 @@
+/* 暗黑主题色 */
+:root.dark {
+  --background-gray-50: #1e1e1e;
+}
+
+/* 明亮主题色 */
+:root {
+  --background-gray-50: #ffffff;
+}

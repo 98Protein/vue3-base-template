@@ -1,0 +1,176 @@
+/* 通用样式设置，包含所有元素的盒模型设置 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border-color: currentColor;
+  border-style: solid;
+  border-width: 0;
+}
+
+/* CSS重置样式，避免浏览器默认样式对布局的影响 */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  /* 行高都为1,方便布局 */
+  line-height: 1;
+  /* 字体默认都为平方 */
+  font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+  box-sizing: border-box;
+}
+
+/* 为旧浏览器提供HTML5显示角色重置 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+/* 列表样式重置 */
+ol,
+ul {
+  list-style: none;
+}
+
+/* 字体加粗设置 */
+strong {
+  font-weight: bold;
+}
+
+/* 字符串引用样式重置 */
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+/* 表格样式重置 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* SVG和path的填充颜色设置 */
+svg {
+  fill: currentColor;
+}
+
+path {
+  fill: currentColor;
+}
+
+/* 初始布局样式设置 */
+html,
+body {
+  color: #0f0f27;
+  overflow: auto;
+}
+
+/* app.vue页面最小宽高设置 */
+#app {
+  min-width: 1200px;
+  min-height: 768px;
+}
