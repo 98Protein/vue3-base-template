@@ -13,11 +13,12 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // Vite 配置文件
 export default defineConfig((env: ConfigEnv) => {
   const { mode, command } = env
+  // 环境变量文件路径
+  const envDir = path.resolve(__dirname, './env')
   // 环境变量
-  const viteENV = loadEnv(mode, process.cwd())
+  const viteENV = loadEnv(mode, envDir)
   const isBuild = command === 'build'
   return {
-    envDir: path.resolve(__dirname, './env'),
     plugins: [
       // 插件配置
       vue(),
@@ -83,7 +84,7 @@ export default defineConfig((env: ConfigEnv) => {
         [viteENV.VITE_APP_BASE_API]: {
           target: viteENV.VITE_APP_BASE_URL,
           changeOrigin: true,
-          rewrite: (path) => path.replace(viteENV.VITE_APP_BASE_URL, ''),
+          rewrite: (path) => path.replace(viteENV.VITE_APP_BASE_API, ''),
         },
       },
     },

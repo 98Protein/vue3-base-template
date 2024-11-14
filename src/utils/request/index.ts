@@ -2,7 +2,7 @@
  * @Author: liangtd
  * @Date: 2024-10-09 10:59:21
  * @LastEditors: liangtd
- * @LastEditTime: 2024-10-09 15:54:55
+ * @LastEditTime: 2024-11-14 10:12:28
  * @Description: axios请求工具类
  */
 import axios, { type AxiosRequestConfig, type CustomParamsSerializer } from 'axios'
@@ -10,15 +10,16 @@ import { stringify } from 'qs'
 import useEnv from '@/hooks/useEnv'
 import { getToken, setToken } from '@/utils/token'
 
-const { VITE_APP_BASE_URL, VITE_APP_BASE_API } = useEnv() // 解构环境变量
+const { VITE_APP_ENV, VITE_APP_BASE_URL, VITE_APP_BASE_API } = useEnv() // 解构环境变量
 
 /** 请求默认配置 */
 const defaultConfig: AxiosRequestConfig = {
   // 请求超时时间 5s
   timeout: 5000,
+  // 请求头
   headers: {
-    Accept: 'application/json, text/plain, */*',
-    'Content-Type': 'application/json',
+    'Accept': 'application/json, text/plain, */*',
+    'Content-Type': 'application/json;charset=UTF-8',
     'X-Requested-With': 'XMLHttpRequest',
   },
   // 数组格式参数序列化（https://github.com/axios/axios/issues/5142）
@@ -29,7 +30,7 @@ const defaultConfig: AxiosRequestConfig = {
 
 /** 创建axios实例 */
 const service = axios.create({
-  baseURL: VITE_APP_BASE_URL + VITE_APP_BASE_API,
+  baseURL: VITE_APP_ENV === 'development' ? VITE_APP_BASE_API : VITE_APP_BASE_URL + VITE_APP_BASE_API,
   ...defaultConfig,
 })
 
@@ -69,7 +70,7 @@ service.interceptors.response.use(
         setToken(newToken)
       }
       // TODO 根据服务端数据结构进行修改
-      return res.data.data
+      return res.data
     }
     const message = res.data.message || `系统未知错误，请反馈给管理员`
     return Promise.reject(new Error(message))
